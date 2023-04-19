@@ -174,7 +174,7 @@ class FFmpegBackend(BaseEncodingBackend):
 
         video_duration = self.get_media_info(video_path)['duration']
         if at_time > video_duration:
-            raise exceptions.InvalidTimeError()
+            at_time = video_duration
         thumbnail_time = at_time
 
         cmd = [self.ffmpeg_path, '-i', video_path, '-vframes', '1']
